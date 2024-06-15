@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const dbconnect = () => {
-    mongoose.connect("mongodb://mongo:27017/test", {useNewUrlParser:true, useUnifiedTopology: true})
+    mongoose.connect("mongodb://127.0.0.1:27017/UserDbExample", {useNewUrlParser:true})
     .then(() =>{
          console.log('Database connected')
     })
