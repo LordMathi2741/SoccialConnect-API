@@ -1,5 +1,5 @@
 const express = require('express');
-const ProfileModel = require('../models/profileModel');
+const PublicationModel = require('../models/publicationModel');
 const router = express.Router();
 
 /**
@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
         try {
-            const profiles = await ProfileModel.find({});
+            const profiles = await PublicationModel.find({});
             res.status(200).json(profiles);
 
         }catch (err) {
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
 
     try {
-        const profile = await ProfileModel.create(req.body);
+        const profile = await PublicationModel.create(req.body);
         res.status(201).json(profile);
     } catch(err) {
         res.status(400).json({ message: err.message });
@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const profile = await ProfileModel.findOneAndUpdate({id: req.body.id}, req.body, {new: true});
+        const profile = await PublicationModel.findOneAndUpdate({id: req.body.id}, req.body, {new: true});
         res.status(200).json(profile);
     } catch(err) {
         res.status(400).json({ message: err.message });
@@ -67,7 +67,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
 
     try{
-        const profile = await ProfileModel.findOneAndDelete({id: req.body.id});
+        const profile = await PublicationModel.findOneAndDelete({id: req.body.id});
         res.status(200).json(profile);
     }catch(err) {
         res.status(400).json({ message: err.message });
