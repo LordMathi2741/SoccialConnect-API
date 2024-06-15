@@ -3,6 +3,7 @@ const express = require("express")
 const ModelUser = require('../models/userModel')
 const router = express.Router()
 
+
 router.get('/', async (req, res) => {
     try {
         const users = await ModelUser.find({});
@@ -30,7 +31,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const users = await ModelUser.findOneAndUpdate({id: req.body.id}, req.body, {new: true});
         res.status(200).json(users);
@@ -39,7 +40,7 @@ router.put('/', async (req, res) => {
     }
 });
 
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
 
     try {
         const users = await ModelUser.findOneAndDelete({id: req.body.id});
