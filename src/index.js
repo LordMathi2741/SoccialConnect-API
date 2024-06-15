@@ -1,7 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser")
-const users = require('../api/users')
-const profiles = require('../api/profiles')
+const users = require('../src/controllers/users')
+const profiles = require('../src/controllers/profiles')
 const app = express()
 const dbconnect = require('../src/server')
 
