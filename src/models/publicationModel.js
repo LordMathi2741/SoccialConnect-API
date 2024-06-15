@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const profileSchema = new mongoose.Schema(
+const publicationSchema = new mongoose.Schema(
     {
        content:{
           type: String,
@@ -27,5 +27,5 @@ const profileSchema = new mongoose.Schema(
     }
 )
 
-const ProfileModel = mongoose.model("profiles",profileSchema)
-module.exports = ProfileModel;
+const PublicationModel = mongoose.model("publication",publicationSchema)
+module.exports = PublicationModel;
