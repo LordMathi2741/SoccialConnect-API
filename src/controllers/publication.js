@@ -50,9 +50,20 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const profile = await PublicationModel.findOneAndUpdate({id: req.body.id}, req.body, {new: true});
+        const id = req.params.id; 
+        const updatedData = req.body; 
+
+        const profile = await PublicationModel.findOneAndUpdate(
+            { _id: id }, 
+            updatedData,
+            { new: true, runValidators: true } 
+        );
+
+        if (!profile) {
+            return res.status(404).json({ message: 'Publication not found' });
+        }
         res.status(200).json(profile);
-    } catch(err) {
+    } catch (err) {
         res.status(400).json({ message: err.message });
     }
 });
